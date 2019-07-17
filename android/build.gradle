@@ -1,0 +1,55 @@
+buildscript {
+    repositories {
+        jcenter()
+        google()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.3.2'
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+repositories {
+    mavenCentral()
+    google()
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    compile 'com.facebook.react:react-native:+'
+    implementation 'com.pep:diandu:1.2.0'
+    implementation 'com.pep:rjfoxit:6.0.3'
+    implementation 'com.liulishuo.okdownload:okdownload:1.0.4'
+    implementation 'com.liulishuo.okdownload:sqlite:1.0.4'
+    implementation 'com.liulishuo.okdownload:okhttp:1.0.4'
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.rjsz.frame:xunfei:1.0.2'
+    implementation 'org.greenrobot:eventbus:3.0.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.google.code.gson:gson:2.6.2'
+    implementation('jameson.io.library:library:0.0.1') {
+        exclude group: "com.android.support", module: "support-v4"
+    }
+    implementation 'com.shuyu:gsyVideoPlayer-java:6.0.2'
+    implementation 'com.alibaba:fastjson:1.1.67.android'
+}

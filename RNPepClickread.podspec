@@ -4,14 +4,14 @@ package = JSON.parse(File.read(File.join(__dir__, 'package.json')))
 
 Pod::Spec.new do |s|
   s.name         = "RNPepClickread"
-  s.version      = package['version']
+  s.version      = "1.0.0"
   s.summary      = package['description']
   s.description  = package['description']
   s.homepage     = "https://github.com/yuntitech/react-native-pep-clickread"
   s.license      = "MIT"
   s.author       = { "ZYXiao" => "304983615@qq.com" }
   s.platform     = :ios, "9.0"
-  s.source       = { :git => "https://github.com/yuntitech/RNPepClickread.git", :tag => package['version'] }
+  s.source       = { :git => "https://github.com/yuntitech/RNPepClickread.git", :tag => "1.0.0" }
   s.source_files  = "ios/RNPepClickread.{h,m}"
   s.requires_arc = true
 

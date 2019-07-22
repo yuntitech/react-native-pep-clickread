@@ -15,10 +15,10 @@ Pod::Spec.new do |s|
   s.source_files  = "ios/RNPepClickread.{h,m}"
   s.requires_arc = true
 
-  s.dependency "PEPNetworking", :git => 'https://github.com/PEPDigitalPublishing/PEPNetworking.git'
-  s.dependency "PEPBigData", :git => 'https://github.com/PEPDigitalPublishing/PEPBigData.git'
-  s.dependency "PEPReaderSDK", :git => 'https://github.com/PEPDigitalPublishing/PEPReaderSDK.git'
-  s.dependency "PEPiFlyMSC", :git => 'https://github.com/PEPDigitalPublishing/PEPiFlyMSC.git'
+  # s.dependency "PEPNetworking", :git => 'https://github.com/PEPDigitalPublishing/PEPNetworking.git'
+  # s.dependency "PEPBigData", :git => 'https://github.com/PEPDigitalPublishing/PEPBigData.git'
+  # s.dependency "PEPReaderSDK", :git => 'https://github.com/PEPDigitalPublishing/PEPReaderSDK.git'
+  # s.dependency "PEPiFlyMSC", :git => 'https://github.com/PEPDigitalPublishing/PEPiFlyMSC.git'
   s.dependency "SSZipArchive"
 
 end

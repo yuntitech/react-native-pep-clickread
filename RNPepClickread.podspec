@@ -1,12 +1,9 @@
-require 'json'
-
-package = JSON.parse(File.read(File.join(__dir__, 'package.json')))
 
 Pod::Spec.new do |s|
   s.name         = "RNPepClickread"
   s.version      = "1.0.0"
-  s.summary      = package['description']
-  s.description  = package['description']
+  s.summary      = "PEPClickread"
+  s.description  = "PEPClickread SDK"
   s.homepage     = "https://github.com/yuntitech/react-native-pep-clickread"
   s.license      = "MIT"
   s.author       = { "ZYXiao" => "304983615@qq.com" }

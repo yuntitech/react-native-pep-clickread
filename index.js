@@ -3,64 +3,64 @@ import { DeviceEventEmitter, NativeModules, Platform } from 'react-native';
 const { RNPepClickread } = NativeModules;
 
 export type TextbooksBean = {
-    book_id: string,
-    book_name: string,
-    book_url: string,
-    catalog_url: string,
-    download_url: string,
-    evaluation_support: boolean,
-    grade: string,
-    icon_url: string,
-    modify_time: string,
-    preview_url: string,
-    size: number,
-    term: string,
-    version: string,
-    isHeader: boolean,
-    type: string,
-    time_consume_sum: number,
-    track_count: number,
-    powertime: string,
-    download_state: number,
-    heard_num: number,
-    heard_time: number,
-    subState: number,
-    test_flag: boolean,
-    hasTest: boolean,
-    is_practise: boolean,
-    ex_pages: number,
-    titlePages: number,
-    titlePrefix: string,
-    titleOffset: number,
-    subject_id: string,
-    total_words: number,
-    book_url_hd: string,
-    download_url_hd: string,
-    size_hd: string,
+	book_id: string,
+	book_name: string,
+	book_url: string,
+	catalog_url: string,
+	download_url: string,
+	evaluation_support: boolean,
+	grade: string,
+	icon_url: string,
+	modify_time: string,
+	preview_url: string,
+	size: number,
+	term: string,
+	version: string,
+	isHeader: boolean,
+	type: string,
+	time_consume_sum: number,
+	track_count: number,
+	powertime: string,
+	download_state: number,
+	heard_num: number,
+	heard_time: number,
+	subState: number,
+	test_flag: boolean,
+	hasTest: boolean,
+	is_practise: boolean,
+	ex_pages: number,
+	titlePages: number,
+	titlePrefix: string,
+	titleOffset: number,
+	subject_id: string,
+	total_words: number,
+	book_url_hd: string,
+	download_url_hd: string,
+	size_hd: string,
 };
 
 export const STATE_PEP_CLICKREAD = {
-    STATE_ADD: 6, //开始下载
-    STATE_ERROR: 5, //下载失败
-    INTERFACE_ERROR: 7, //下载接口访问失败
-    STATE_WAIT: 1, //暂停中
-    STATE_DOWNLOAD: 2, //下载中
-    STATE_UNZIP: 3, //解压中
-    STATE_SUCCESS: 4, //下载成功
+	STATE_ADD: 6, //开始下载
+	STATE_ERROR: 5, //下载失败
+	INTERFACE_ERROR: 7, //下载接口访问失败
+	STATE_WAIT: 1, //暂停中
+	STATE_DOWNLOAD: 2, //下载中
+	STATE_UNZIP: 3, //解压中
+	STATE_SUCCESS: 4, //下载成功
 };
 
 export type ProgressData = {
-    book_id: string,
-    progress: number,
-    state: number,
-    stateTips: string,
+	book_id: string,
+	progress: number,
+	state: number,
+	stateTips: string,
 };
 
 /**
  * @param appKey​ 分配的平台key​必填
  */
 const init = (appKey: string) => {
-    RNPepClickread.init(appKey);
+	RNPepClickread.init(appKey);
 };
 
 /**
@@ -73,7 +73,7 @@ const init = (appKey: string) => {
  *                fail网络请求失败后回调
  */
 const syncOrder = async (userId: string): Promise<string> => {
-    return RNPepClickread.syncOrder(userId);
+	return RNPepClickread.syncOrder(userId);
 };
 
 /**
@@ -81,7 +81,7 @@ const syncOrder = async (userId: string): Promise<string> => {
  * @return devices list json
  */
 const getDevices = async (): Promise<string> => {
-    return RNPepClickread.getDevices();
+	return RNPepClickread.getDevices();
 };
 
 /**
@@ -91,11 +91,8 @@ const getDevices = async (): Promise<string> => {
  *                          list.add(dev_id_2); 解绑设备id为dev_id_2的设备
  * @param promise           (回调接口)
  */
-const removeDevices = async (
-    userId: string,
-    list: Array<string>
-): Promise<string> => {
-    return RNPepClickread.removeDevices(userId, list);
+const removeDevices = async (userId: string, list: Array<string>): Promise<string> => {
+	return RNPepClickread.removeDevices(userId, list);
 };
 
 /**
@@ -103,11 +100,8 @@ const removeDevices = async (
  *
  * 根据book_id返回教材信息
  */
-const getBookItemById = async (
-    userId: string,
-    bookId: string
-): Promise<TextbooksBean> => {
-    return RNPepClickread.getBookItemById(userId, bookId);
+const getBookItemById = async (userId: string, bookId: string): Promise<TextbooksBean> => {
+	return RNPepClickread.getBookItemById(userId, bookId);
 };
 
 /**
@@ -116,7 +110,7 @@ const getBookItemById = async (
  * @param userId 用户id
  */
 const getAllBookList = async (userId: string): Promise<TextbooksBean[]> => {
-    return RNPepClickread.getAllBookList(userId);
+	return RNPepClickread.getAllBookList(userId);
 };
 
 /**
@@ -127,15 +121,11 @@ const getAllBookList = async (userId: string): Promise<TextbooksBean[]> => {
  * @param num                    打开页码只有已购买状态才成能成功打开该页码
  */
 const openBook = async (params: {
-    textbooksBean: TextbooksBean,
-    forExperience?: boolean,
-    num?: number,
+	textbooksBean: TextbooksBean,
+	forExperience: boolean,
+	num: number,
 }): Promise<void> => {
-    return RNPepClickread.openBook(
-        params.textbooksBean,
-        params.forExperience || false,
-        params.num || 0
-    );
+	return RNPepClickread.openBook(params.textbooksBean, params.forExperience, params.num);
 };
 
 /**
@@ -144,7 +134,7 @@ const openBook = async (params: {
  * @param textbooksBean BookList.TextbooksBean对象
  */
 const download = (textbooksBean: TextbooksBean) => {
-    RNPepClickread.download(textbooksBean);
+	RNPepClickread.download(textbooksBean);
 };
 
 /**
@@ -153,7 +143,7 @@ const download = (textbooksBean: TextbooksBean) => {
  * @param bookId 书籍id
  */
 const pauseDownloadOfBookID = (bookId: string) => {
-    RNPepClickread.pauseDownloadOfBookID(bookId);
+	RNPepClickread.pauseDownloadOfBookID(bookId);
 };
 
 /**
@@ -162,7 +152,7 @@ const pauseDownloadOfBookID = (bookId: string) => {
  * @param bookId 书籍id
  */
 const continueDownloadOfBookID = (bookId: string) => {
-    RNPepClickread.continueDownloadOfBookID(bookId);
+	RNPepClickread.continueDownloadOfBookID(bookId);
 };
 
 /**
@@ -172,7 +162,7 @@ const continueDownloadOfBookID = (bookId: string) => {
  * @return true：删除成功  false：删除失败
  */
 const deleteBook = async (bookId: string): Promise<boolean> => {
-    return RNPepClickread.deleteBook(bookId);
+	return RNPepClickread.deleteBook(bookId);
 };
 
 /**
@@ -181,7 +171,7 @@ const deleteBook = async (bookId: string): Promise<boolean> => {
  * @return cacheSize (缓存大小  单位为字节)
  */
 const getCacheDirSize = async (): Promise<number> => {
-    return RNPepClickread.getCacheDirSize();
+	return RNPepClickread.getCacheDirSize();
 };
 
 /**
@@ -190,7 +180,7 @@ const getCacheDirSize = async (): Promise<number> => {
  * @return isClean是否清除成功
  */
 const deleteCacheDir = async (): Promise<boolean> => {
-    return RNPepClickread.deleteCacheDir();
+	return RNPepClickread.deleteCacheDir();
 };
 
 /**
@@ -199,7 +189,7 @@ const deleteCacheDir = async (): Promise<boolean> => {
  * @param textbooksBean
  */
 const isDownloaded = async (textbooksBean: TextbooksBean): Promise<boolean> => {
-    return RNPepClickread.isDownloaded(textbooksBean);
+	return RNPepClickread.isDownloaded(textbooksBean);
 };
 
 /**
@@ -209,14 +199,14 @@ const isDownloaded = async (textbooksBean: TextbooksBean): Promise<boolean> => {
  * @return true：有更新  false：没有更新
  */
 const hasUpdate = async (textbooksBean: TextbooksBean): Promise<boolean> => {
-    return RNPepClickread.hasUpdate(textbooksBean);
+	return RNPepClickread.hasUpdate(textbooksBean);
 };
 
 /**
  * 获取书本状态（是否已经订购）
  */
 const hasBuy = async (bookId: string): Promise<boolean> => {
-    return RNPepClickread.hasBuy(bookId);
+	return RNPepClickread.hasBuy(bookId);
 };
 
 /***
@@ -226,36 +216,36 @@ const hasBuy = async (bookId: string): Promise<boolean> => {
  * @return CatalogList json
  */
 const getBookCatalogById = async (bookId: string): Promise<string> => {
-    return RNPepClickread.getBookCatalogById(bookId);
+	return RNPepClickread.getBookCatalogById(bookId);
 };
 
 const EVENT_PROGRESS = 'RNPepClickReadProgress';
 const addProgressListener = (onProgress: (data: ProgressData) => void) => {
-    DeviceEventEmitter.addListener(EVENT_PROGRESS, onProgress);
+	DeviceEventEmitter.addListener(EVENT_PROGRESS, onProgress);
 };
 
 const removeProgressListener = (onProgress: (data: ProgressData) => void) => {
-    DeviceEventEmitter.removeListener(EVENT_PROGRESS, onProgress);
+	DeviceEventEmitter.removeListener(EVENT_PROGRESS, onProgress);
 };
 
 export default {
-    init,
-    syncOrder,
-    getDevices,
-    removeDevices,
-    getBookItemById,
-    getAllBookList,
-    openBook,
-    download,
-    pauseDownloadOfBookID,
-    continueDownloadOfBookID,
-    deleteBook,
-    getCacheDirSize,
-    deleteCacheDir,
-    isDownloaded,
-    hasUpdate,
-    hasBuy,
-    getBookCatalogById,
-    addProgressListener,
-    removeProgressListener,
+	init,
+	syncOrder,
+	getDevices,
+	removeDevices,
+	getBookItemById,
+	getAllBookList,
+	openBook,
+	download,
+	pauseDownloadOfBookID,
+	continueDownloadOfBookID,
+	deleteBook,
+	getCacheDirSize,
+	deleteCacheDir,
+	isDownloaded,
+	hasUpdate,
+	hasBuy,
+	getBookCatalogById,
+	addProgressListener,
+	removeProgressListener,
 };

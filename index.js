@@ -2,6 +2,16 @@ import { DeviceEventEmitter, NativeModules, Platform } from 'react-native';
 
 const { RNPepClickread } = NativeModules;
 
+export type GradeBean = {
+	gradename: string,
+	grade: Array<TermBean>,
+};
+
+export type TermBean = {
+	term: string,
+	textbooks: Array<TextbooksBean>,
+};
+
 export type TextbooksBean = {
 	book_id: string,
 	book_name: string,

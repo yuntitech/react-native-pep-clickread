@@ -13,6 +13,7 @@ export type TermBean = {
 };
 
 export type TextbooksBean = {
+	term: string,
 	book_id: string,
 	book_name: string,
 	book_url: string,

@@ -356,7 +356,11 @@ public class RNPepClickreadModule extends ReactContextBaseJavaModule {
         gradeMap.putString("gradename", gradeBean.gradename);
         WritableArray gradeArr = Arguments.createArray();
         for (BookList.TermBean termBean : gradeBean.grade) {
-            gradeArr.pushMap(fromTermBean(termBean));
+            for (BookList.TextbooksBean textbooksBean : termBean.textbooks) {
+                WritableMap textbooksMap = fromTextbooksBean(textbooksBean);
+                textbooksMap.putString("term", termBean.term);
+                gradeArr.pushMap(textbooksMap);
+            }
         }
         gradeMap.putArray("data", gradeArr);
         return gradeMap;

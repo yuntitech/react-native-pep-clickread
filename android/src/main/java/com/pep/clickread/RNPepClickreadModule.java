@@ -167,17 +167,12 @@ public class RNPepClickreadModule extends ReactContextBaseJavaModule {
                     promise.resolve(null);
                     return;
                 }
-                WritableArray textbooks = Arguments.createArray();
+                WritableArray books = Arguments.createArray();
                 for (int i = 0; i < bookList.booklist.size(); i++) {
-                    BookList.GradeBean gradeBeans = bookList.booklist.get(i);
-                    for (int j = 0; j < gradeBeans.grade.size(); j++) {
-                        BookList.TermBean termBean = gradeBeans.grade.get(j);
-                        for (BookList.TextbooksBean eachBean : termBean.textbooks) {
-                            textbooks.pushMap(fromTextbooksBean(eachBean));
-                        }
-                    }
+                    BookList.GradeBean gradeBean = bookList.booklist.get(i);
+                    books.pushMap(fromGradeBean(gradeBean));
                 }
-                promise.resolve(textbooks);
+                promise.resolve(books);
             }
 
             @Override
@@ -354,6 +349,28 @@ public class RNPepClickreadModule extends ReactContextBaseJavaModule {
                 break;
         }
         eventEmitter.emit(EVENT_PROGRESS, writableMap);
+    }
+
+    private WritableMap fromGradeBean(BookList.GradeBean gradeBean) {
+        WritableMap gradeMap = Arguments.createMap();
+        gradeMap.putString("gradename", gradeBean.gradename);
+        WritableArray gradeArr = Arguments.createArray();
+        for (BookList.TermBean termBean : gradeBean.grade) {
+            gradeArr.pushMap(fromTermBean(termBean));
+        }
+        gradeMap.putArray("data", gradeArr);
+        return gradeMap;
+    }
+
+    private WritableMap fromTermBean(BookList.TermBean termBean) {
+        WritableMap termMap = Arguments.createMap();
+        termMap.putString("term", termBean.term);
+        WritableArray textbooksArr = Arguments.createArray();
+        for (BookList.TextbooksBean textbooksBean : termBean.textbooks) {
+            textbooksArr.pushMap(fromTextbooksBean(textbooksBean));
+        }
+        termMap.putArray("data", textbooksArr);
+        return termMap;
     }
 
     private WritableMap fromTextbooksBean(BookList.TextbooksBean textbooksBean) {

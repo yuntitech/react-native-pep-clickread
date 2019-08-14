@@ -24,6 +24,7 @@ import com.rjsz.frame.diandu.bean.CataLogBean;
 import com.rjsz.frame.diandu.bean.PRDownloadInfo;
 import com.rjsz.frame.diandu.callback.ReqCallBack;
 import com.rjsz.frame.diandu.config.PRStateCode;
+import com.rjsz.frame.diandu.event.SdkEvent;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -35,6 +36,7 @@ import java.util.List;
 public class RNPepClickreadModule extends ReactContextBaseJavaModule {
 
     public static final String EVENT_PROGRESS = "RNPepClickReadProgress";
+    private static final String EVENT_ExperienceDidEnded = "PepBookExperienceDidEnded";
     private final ReactApplicationContext reactContext;
     private DeviceEventManagerModule.RCTDeviceEventEmitter eventEmitter;
 
@@ -349,6 +351,23 @@ public class RNPepClickreadModule extends ReactContextBaseJavaModule {
                 break;
         }
         eventEmitter.emit(EVENT_PROGRESS, writableMap);
+    }
+
+    /**
+     * @param event 购买回调
+     */
+    @Subscribe
+    public void handleSdkEvent(SdkEvent event) {
+        if (event.eventType == SdkEvent.EVENT_EXPERIENCE_END) {
+            event.activity.finish();//关闭阅读器
+            WritableMap result = Arguments.createMap();
+            WritableMap bookInfo = Arguments.createMap();
+            bookInfo.putString("book_id", event.bookId);
+            result.putMap("bookInfo", bookInfo);
+            eventEmitter.emit(EVENT_ExperienceDidEnded, result);
+        } else if (event.eventType == SdkEvent.EVENT_SHOW_BUY_TIP) {
+
+        }
     }
 
     private WritableMap fromGradeBean(BookList.GradeBean gradeBean) {

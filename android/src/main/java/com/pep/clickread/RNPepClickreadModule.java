@@ -21,6 +21,7 @@ import com.rjsz.frame.diandu.PRSDKManager;
 import com.rjsz.frame.diandu.PRViewManager;
 import com.rjsz.frame.diandu.bean.BookList;
 import com.rjsz.frame.diandu.bean.CataLogBean;
+import com.rjsz.frame.diandu.bean.PRConfig;
 import com.rjsz.frame.diandu.bean.PRDownloadInfo;
 import com.rjsz.frame.diandu.callback.ReqCallBack;
 import com.rjsz.frame.diandu.config.PRStateCode;
@@ -59,12 +60,22 @@ public class RNPepClickreadModule extends ReactContextBaseJavaModule {
         EventBus.getDefault().register(this);
     }
 
+    @Override
+    public void onCatalystInstanceDestroy() {
+        EventBus.getDefault().unregister(this);
+        super.onCatalystInstanceDestroy();
+    }
+
     /**
      * @param appKey​ 分配的平台key​必填
      */
     @ReactMethod
     public void init(String appKey) {
-        PRSDKManager.getInstance().init((Application) reactContext.getApplicationContext(), appKey);
+        PRSDKManager.getInstance().init((Application) reactContext.getApplicationContext(),
+                        new PRConfig.Builder()
+                                .setAppKey(appKey)
+                                .setIsShowCustomBuyTip(true)
+                                .build());
     }
 
 
@@ -358,15 +369,12 @@ public class RNPepClickreadModule extends ReactContextBaseJavaModule {
      */
     @Subscribe
     public void handleSdkEvent(SdkEvent event) {
-        if (event.eventType == SdkEvent.EVENT_EXPERIENCE_END) {
-            event.activity.finish();//关闭阅读器
+        if (event.eventType == SdkEvent.EVENT_SHOW_BUY_TIP) {
             WritableMap result = Arguments.createMap();
             WritableMap bookInfo = Arguments.createMap();
             bookInfo.putString("book_id", event.bookId);
             result.putMap("bookInfo", bookInfo);
             eventEmitter.emit(EVENT_ExperienceDidEnded, result);
-        } else if (event.eventType == SdkEvent.EVENT_SHOW_BUY_TIP) {
-
         }
     }
 

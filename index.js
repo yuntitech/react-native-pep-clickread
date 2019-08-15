@@ -12,6 +12,7 @@ export type TermBean = {
 	textbooks: Array<TextbooksBean>,
 };
 
+// 注意：这里iOS和Android人教点读书数据模型字段不完全一致，下面列的是android的数据模型；
 export type TextbooksBean = {
 	term: string,
 	book_id: string,
@@ -25,7 +26,6 @@ export type TextbooksBean = {
 	modify_time: string,
 	preview_url: string,
 	size: number,
-	term: string,
 	version: string,
 	isHeader: boolean,
 	type: string,

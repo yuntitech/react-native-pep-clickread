@@ -36,7 +36,7 @@ repositories {
 
 dependencies {
     compile 'com.facebook.react:react-native:+'
-    api 'com.pep:diandu:1.2.0'
+    api 'com.pep:diandu:1.2.1'
     implementation 'com.pep:rjfoxit:6.0.3'
     implementation 'com.liulishuo.okdownload:okdownload:1.0.4'
     implementation 'com.liulishuo.okdownload:sqlite:1.0.4'

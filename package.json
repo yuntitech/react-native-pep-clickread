@@ -1,8 +1,9 @@
 
 {
   "name": "react-native-pep-clickread",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "homepage": "https://github.com/yuntitech/react-native-pep-clickread",
+  "description": "https://github.com/PEPDigitalPublishing/PEPReaderSDK for React Native",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,8 +11,8 @@
   "keywords": [
     "react-native"
   ],
-  "author": "",
-  "license": "",
+  "author": "yunti",
+  "license": "MIT",
   "peerDependencies": {
     "react-native": ">0.50.0"
   }

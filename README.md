@@ -12,7 +12,9 @@
 
 Add the following to `Podfile`
 
-`pod 'PEPReaderSDK', { :git => 'https://github.com/PEPDigitalPublishing/PEPReaderSDK.git', :tag => 'x.x.x' }`
+```
+pod 'PEPReaderSDK', { :git => 'https://github.com/PEPDigitalPublishing/PEPReaderSDK.git', :tag => 'x.x.x' }
+```
 
 
 #### Android

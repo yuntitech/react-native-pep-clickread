@@ -35,21 +35,24 @@ repositories {
 }
 
 dependencies {
-    compile 'com.facebook.react:react-native:+'
-    api 'com.pep:diandu:1.4.0'
-    implementation 'com.pep:rjfoxit:7.1.1'
-    implementation 'com.liulishuo.okdownload:okdownload:1.0.4'
-    implementation 'com.liulishuo.okdownload:sqlite:1.0.4'
-    implementation 'com.liulishuo.okdownload:okhttp:1.0.4'
-    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
-    implementation 'com.rjsz.frame:xunfei:1.0.2'
-    implementation 'org.greenrobot:eventbus:3.0.0'
-    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.facebook.react:react-native:+'
+    api 'com.pep:diandu:2.0.0'
+    implementation 'com.pep:rjfoxit:7.3.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.percentlayout:percentlayout:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'com.google.code.gson:gson:2.6.2'
-    implementation('jameson.io.library:library:0.0.1') {
-        exclude group: "com.android.support", module: "support-v4"
-    }
-    implementation 'com.shuyu:gsyVideoPlayer-java:6.0.2'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    api 'com.shuyu:GSYVideoPlayer:7.1.6'
+    implementation 'org.greenrobot:eventbus:3.2.0'
+    implementation 'com.liulishuo.okdownload:okdownload:1.0.7'
+    implementation 'com.liulishuo.okdownload:sqlite:1.0.7'
+    implementation 'com.liulishuo.okdownload:okhttp:1.0.7'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+    implementation 'com.rjsz.frame:xunfei:1.0.2'
     implementation 'com.alibaba:fastjson:1.1.67.android'
 }

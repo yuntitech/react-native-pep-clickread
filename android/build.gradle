@@ -43,7 +43,7 @@ dependencies {
     implementation 'com.liulishuo.okdownload:sqlite:1.0.4'
     implementation 'com.liulishuo.okdownload:okhttp:1.0.4'
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
-    implementation 'com.rjsz.frame:xunfei:1.0.2'
+    implementation 'com.pep.xunfei:pepxunfei:1.5.1'
     implementation 'org.greenrobot:eventbus:3.0.0'
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
